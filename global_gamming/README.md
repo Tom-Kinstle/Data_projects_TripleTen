@@ -7,7 +7,7 @@ Built a model to predict video game success by analyzing sales, platform, and re
 https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/global_gamming/Global%20Gaming%20pdf.pdf
 
 # Project Notebook 
-https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/car_sales_market_analysis/car_sales_market_analysis.ipynb
+https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/global_gamming/Global%20Gaming%20Marketing%20Strategy.ipynb
 
 # Data
 
