@@ -12,8 +12,15 @@ This project takes a large data file of 51,525 records containing sales informat
 
 • Then run the app file (streamlit run app.py).
 
-The application can be viewed online at the following address as well.
+# Website
 
 https://eda-car-advertisement.onrender.com
+
+# Project Notebook 
+https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/car_sales_market_analysis/car_sales_market_analysis.ipynb
+
+# Data
+
+https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/car_sales_market_analysis/vehicles_us.csv
 
 Thank you! Tom
