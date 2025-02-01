@@ -8,3 +8,5 @@ https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/lift_taxi/Lift%
 # Data
 
 https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/lift_taxi/taxi%20(1).csv
+
+Thank you! Tom
