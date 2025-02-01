@@ -7,8 +7,8 @@ https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/minning_opp/Pre
 
 # Data
 
-https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/minning_opp/geo_data_0.csv
-https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/minning_opp/geo_data_1.csv
-https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/minning_opp/geo_data_2.csv
+-https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/minning_opp/geo_data_0.csv
+-https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/minning_opp/geo_data_1.csv
+-https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/minning_opp/geo_data_2.csv
 
 Thank you! Tom
