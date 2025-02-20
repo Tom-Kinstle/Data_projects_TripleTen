@@ -18,4 +18,4 @@ Project to identified optimal drilling locations by analyzing geological data an
 
 # Geospatial Data 
 
-Currently working on a project to vectorize Geospatial data, to be added in near future.
+Currently working on a project to vectorize Geospatial data, to be added in near future. 
