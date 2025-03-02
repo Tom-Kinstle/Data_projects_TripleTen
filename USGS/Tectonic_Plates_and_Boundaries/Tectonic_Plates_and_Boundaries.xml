@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <descript>
+            <abstract>Tectonic plates are pieces of Earth's crust and upper mantle called the lithosphere and are about 100 km thick. There are two main types of plates: oceanic and continental, each composed of different materials. The formation and movement of these plates generates everything from the shape and orientation of continents to the mountains and trenches on Earth. The plates layer shows major and minor plates. Microplates are not included in this map. This version of the tectonic plates and boundaries was derived from Peter Bird in Geochemistry Geophysics Geosystems, 4(3), 1027, [doi:10.1029/2001GC000252]. The full publication can be read here. Processing of the 2014 version of the data into GIS formats was done by Hugo Ahlenius. </abstract>
+            <purpose>These layers display Earth's tectonic plates along with the boundaries.</purpose>
+        </descript>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>geology</themekey>
+                <themekey>tectonic</themekey>
+                <themekey>continents</themekey>
+            </theme>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>Open Data Commons Open Database License (ODbL) v1.0You are free:To share: To copy, distribute and use the database.To create: To produce works from the database.To adapt: To modify, transform and build upon the database.As long as you:Attribute: You must attribute any public use of the database, or works produced from the database, in the manner specified in the license. For any use or redistribution of the database, or works produced from it, you must make clear to others the license of the database and keep intact any notices on the original database.</useconst>
+        <datacred>Peter Bird, Hugo Ahlenius/Nordpil </datacred>
+    </idinfo>
+    <metainfo>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>
