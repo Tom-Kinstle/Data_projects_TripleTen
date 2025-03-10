@@ -1,3 +1,6 @@
+# Live Interactive Map
+https://major-world-earthquakes.netlify.app/ 
+
 # Combining Classification and Temporal Features:
  * Geopandas for Regional Data: Use geopandas to associate earthquakes with specific regions (e.g., California, specific areas of India).
  * Feature Engineering (Temporal and Non-Temporal):
