@@ -21,5 +21,6 @@ Sweet Lift Taxi Company has gathered historical data on taxi orders at airports.
 Project to identified optimal drilling locations by analyzing geological data and evaluating risk factors. Linear regression models predicted oil production, with Geo Data 2 showing the highest production and profitability potential, offering an estimated $70M in operating profit and a 41% profit margin.
 
 # Geospatial Data 
-
-Currently working on a project to vectorize Geospatial data, to be added in near future. 
+##### (project in work)
+Live interactive map
+https://major-world-earthquakes.netlify.app/
