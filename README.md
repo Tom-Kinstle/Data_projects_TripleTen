@@ -22,5 +22,6 @@ Project to identified optimal drilling locations by analyzing geological data an
 
 # Geospatial Data 
 ##### (project in work)
+Earthquakes cause massive destruction, leading to thousands of deaths and billions in economic losses—like the $235 billion impact of Japan’s 2011 Tōhoku earthquake and the 230,000 deaths caused by the 2010 Haiti earthquake—but predicting them remains one of the most difficult challenges in science.
 Live interactive map
 https://major-world-earthquakes.netlify.app/
