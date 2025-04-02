@@ -1,4 +1,4 @@
-# Live Interactive Map
+# Live Interactive Map 
 https://major-world-earthquakes.netlify.app/ 
 
 # Combining Classification and Temporal Features:
