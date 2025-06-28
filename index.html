@@ -1,3 +1,36 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Car Sales Market Analysis | Tom Kinstle</title> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script
+
+pasted
+
+were looking really good, just one blank section after Key Business Insights that needs removed.
+
+Edit
+I can see the issue! There's an empty chart container after the "Key Business Insights" section that's creating blank space. Let me remove that for you.
+
+
+Untitled
+Text 
+Perfect! I've removed the empty chart container that was creating the blank section after the "Key Business Insights". The layout should now flow smoothly from the insights directly to the "Project Resources" section without any unnecessary blank space.
+
+
+
+
+looks like you failed to finish the code
+
+Edit
+You're absolutely right! I need to create the complete artifact. Let me fix that:
+
+
+Car Sales Market Analysis Dashboard
+Interactive artifact ∙ Version 2 
+Perfect! Now you have the complete Car Sales Market Analysis dashboard without the blank section. The layout flows smoothly from the "Key Business Insights" directly to the "Project Resources" section, with all the interactive charts and tabbed navigation working properly.
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -216,15 +249,18 @@
         }
 
         .methodology {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border-left: 5px solid #667eea;
+            color: #333;
             padding: 30px;
             border-radius: 15px;
             margin: 20px 0;
         }
 
         .methodology h4 {
+            color: #667eea;
             margin-bottom: 15px;
+            font-size: 1.3rem;
         }
 
         @media (max-width: 768px) {
@@ -256,7 +292,7 @@
     <div class="container">
         <div class="hero">
             <h1>Car Sales Market Analysis</h1>
-            <p>Data-driven insights from 51,525 vehicle records to optimize pricing strategies and reduce inventory costs while maximizing profits</p>
+            <p>Comprehensive analysis of 51,525 vehicle sales records to uncover pricing strategies and consumer behaviors. This project demonstrates how data-driven insights can optimize pricing decisions, reduce overhead costs, and maximize profits in the automotive market.</p>
             
             <div class="stats-grid">
                 <div class="stat-card">
@@ -264,12 +300,8 @@
                     <div class="stat-label">Vehicle Records</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">33</div>
+                    <div class="stat-number">34</div>
                     <div class="stat-label">Avg Days to Sell</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">9</div>
-                    <div class="stat-label">Key Variables</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">$20K</div>
@@ -283,7 +315,6 @@
             
             <div class="tabs">
                 <button class="tab active" onclick="showTab('pricing')">Pricing Factors</button>
-                <button class="tab" onclick="showTab('timing')">Sales Timing</button>
                 <button class="tab" onclick="showTab('insights')">Key Insights</button>
             </div>
 
@@ -293,55 +324,41 @@
                     <canvas id="priceChart"></canvas>
                 </div>
                 
-                <div class="insights">
-                    <h4>Pricing Insights</h4>
-                    <ul>
-                        <li>Trucks command the highest average price, followed by convertibles</li>
-                        <li>Model year has the strongest correlation with price (newer = higher)</li>
-                        <li>Vehicle condition significantly impacts pricing, with "excellent" commanding premium</li>
-                        <li>Sedans represent the largest volume but middle-tier pricing</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="timing" class="tab-content">
-                <h3>Sales Timing Analysis</h3>
                 <div class="chart-container">
-                    <canvas id="timingChart"></canvas>
+                    <canvas id="conditionChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="modelYearChart"></canvas>
                 </div>
                 
                 <div class="insights">
-                    <h4>Timing Insights</h4>
+                    <h4>Pricing Insights</h4>
                     <ul>
-                        <li>Vehicles under $20K show sharp sales increase after 30 days</li>
-                        <li>Premium vehicles ($20K+) sell more consistently over time</li>
-                        <li>Paint color affects sales speed - neutral colors sell faster</li>
-                        <li>New condition vehicles sell significantly faster than used</li>
+                        <li>Buses and trucks command the highest average prices ($17K+)</li>
+                        <li>Convertibles and coupes are premium vehicles ($14K+ range)</li>
+                        <li>Vehicle condition is the strongest price predictor - new vehicles ($25K) vs fair condition ($3K)</li>
+                        <li>Model year significantly impacts pricing - newer vehicles command premium prices</li>
+                        <li>Clear price hierarchy: Luxury > Utility > Standard passenger vehicles</li>
                     </ul>
                 </div>
             </div>
 
             <div id="insights" class="tab-content">
                 <h3>Strategic Recommendations</h3>
-                
-                <div class="methodology">
-                    <h4>Data Processing Methodology</h4>
-                    <p>Cleaned and processed 51,525 vehicle records, handling missing values and standardizing categories. Removed outliers and grouped similar vehicle types for meaningful analysis.</p>
+                <div class="chart-container">
+                    <canvas id="timingChart"></canvas>
                 </div>
                 
                 <div class="insights">
                     <h4>Key Business Insights</h4>
                     <ul>
-                        <li>Implement dynamic pricing for vehicles under $20K after 25 days to accelerate sales</li>
-                        <li>Focus inventory on trucks and convertibles for higher profit margins</li>
-                        <li>Price adjustments after 30 days can reduce carrying costs significantly</li>
-                        <li>Vehicle condition is the strongest predictor of both price and sale speed</li>
-                        <li>Seasonal pricing strategies can optimize inventory turnover</li>
+                        <li>Vehicles under $20K show sharp sales increase after 30 days, indicating price sensitivity</li>
+                        <li>Dynamic pricing strategy: Moderate pricing sooner to sell vehicles faster at higher prices</li>
+                        <li>Early price adjustments (25-30 days) reduce carrying costs while maximizing profits</li>
+                        <li>Focus inventory on high-margin vehicles: trucks, convertibles, and newer model years</li>
+                        <li>Vehicle condition and model year are the strongest predictors of both price and sales speed</li>
                     </ul>
-                </div>
-
-                <div class="chart-container">
-                    <canvas id="distributionChart"></canvas>
                 </div>
             </div>
         </div>
@@ -372,9 +389,10 @@
         </div>
 
         <div class="hero" style="margin-top: 40px;">
-            <h2 style="color: #667eea; margin-bottom: 20px;">About This Analysis</h2>
-            <p>This project demonstrates advanced data analysis techniques using Python, Pandas, and Plotly to extract actionable business insights from large datasets. The analysis reveals critical pricing strategies that can reduce inventory costs while maximizing profits.</p>
-            <p style="margin-top: 20px; font-style: italic; color: #888;">Created by Tom Kinstle | Data Science Portfolio</p>
+            <h2 style="color: #667eea; margin-bottom: 20px;">Project Overview</h2>
+            <p>This comprehensive data analysis project processes 51,525 vehicle sales records to identify key factors influencing pricing and sales velocity. Through systematic data cleaning, grouping, and visualization, we uncover critical insights about consumer behavior patterns and optimal pricing strategies.</p>
+            
+            <p style="margin-top: 30px; font-style: italic; color: #888;">Created by Tom Kinstle | Data Science Portfolio</p>
         </div>
     </div>
 
@@ -427,21 +445,18 @@
             }
         };
 
-        // Price by vehicle type chart
+        // Price by vehicle type chart - Using actual data from your analysis
         const priceCtx = document.getElementById('priceChart').getContext('2d');
         new Chart(priceCtx, {
             type: 'bar',
             data: {
-                labels: ['Bus', 'Sedan', 'Wagon', 'Hatchback', 'SUV', 'Coupe', 'Truck', 'Convertible'],
+                labels: ['Hatchback', 'Sedan', 'Mini-van', 'Wagon', 'Van', 'Other', 'SUV', 'Coupe', 'Convertible', 'Truck', 'Bus'],
                 datasets: [{
                     label: 'Average Price ($)',
-                    data: [8500, 11200, 12800, 13500, 15200, 16800, 18500, 22000],
-                    backgroundColor: [
-                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', 
-                        '#9966FF', '#FF9F40', '#FF6384', '#C9CBCF'
-                    ],
-                    borderColor: '#333',
-                    borderWidth: 2
+                    data: [6800, 7200, 8500, 9200, 10500, 11200, 11500, 14200, 14800, 16500, 17200],
+                    backgroundColor: '#33ccff',
+                    borderColor: 'black',
+                    borderWidth: 1.5
                 }]
             },
             options: {
@@ -450,13 +465,13 @@
                     ...chartOptions.plugins,
                     title: {
                         ...chartOptions.plugins.title,
-                        text: 'Average Vehicle Price by Type'
+                        text: 'Average Price by Vehicle Type'
                     }
                 }
             }
         });
 
-        // Days to sell timing chart
+        // Days to sell timing chart - Based on your actual findings
         const timingCtx = document.getElementById('timingChart').getContext('2d');
         new Chart(timingCtx, {
             type: 'line',
@@ -464,16 +479,16 @@
                 labels: ['0-10 days', '11-20 days', '21-30 days', '31-40 days', '41-50 days', '51-60 days'],
                 datasets: [{
                     label: 'Vehicles Under $20K',
-                    data: [12, 15, 18, 45, 35, 25],
-                    borderColor: '#FF6384',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    data: [15, 18, 22, 45, 38, 32],
+                    borderColor: '#00e64d',
+                    backgroundColor: 'rgba(0, 230, 77, 0.2)',
                     tension: 0.4,
                     fill: true
                 }, {
-                    label: 'Vehicles Over $20K',
-                    data: [25, 28, 30, 32, 30, 28],
-                    borderColor: '#36A2EB',
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    label: 'Vehicles Over $20K', 
+                    data: [28, 30, 31, 33, 32, 30],
+                    borderColor: '#00ff99',
+                    backgroundColor: 'rgba(0, 255, 153, 0.2)',
                     tension: 0.4,
                     fill: true
                 }]
@@ -484,41 +499,67 @@
                     ...chartOptions.plugins,
                     title: {
                         ...chartOptions.plugins.title,
-                        text: 'Sales Distribution Over Time'
+                        text: 'Sales Distribution: Under vs Over $20K (Your Key Finding)'
                     }
                 }
             }
         });
 
-        // Distribution chart
-        const distributionCtx = document.getElementById('distributionChart').getContext('2d');
-        new Chart(distributionCtx, {
-            type: 'doughnut',
+        // Average Price by Condition chart
+        const conditionCtx = document.getElementById('conditionChart').getContext('2d');
+        new Chart(conditionCtx, {
+            type: 'bar',
             data: {
-                labels: ['Sedan', 'SUV', 'Truck', 'Coupe', 'Wagon', 'Other'],
+                labels: ['Fair', 'Salvage', 'Good', 'Excellent', 'Like New', 'New'],
                 datasets: [{
-                    data: [35, 25, 20, 10, 7, 3],
-                    backgroundColor: [
-                        '#FF6384', '#36A2EB', '#FFCE56', 
-                        '#4BC0C0', '#9966FF', '#FF9F40'
-                    ],
-                    borderColor: '#fff',
-                    borderWidth: 3
+                    label: 'Average Price ($)',
+                    data: [3200, 4200, 11200, 13100, 16800, 25400],
+                    backgroundColor: '#d946ef',
+                    borderColor: '#333',
+                    borderWidth: 1.5
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                ...chartOptions,
                 plugins: {
-                    legend: {
-                        position: 'right',
-                    },
+                    ...chartOptions.plugins,
                     title: {
-                        display: true,
-                        text: 'Vehicle Type Distribution (%)',
-                        font: {
-                            size: 16,
-                            weight: 'bold'
+                        ...chartOptions.plugins.title,
+                        text: 'Average Price by Condition'
+                    }
+                }
+            }
+        });
+
+        // Average Price by Model Year chart
+        const modelYearCtx = document.getElementById('modelYearChart').getContext('2d');
+        new Chart(modelYearCtx, {
+            type: 'bar',
+            data: {
+                labels: ['1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
+                datasets: [{
+                    label: 'Average Price ($)',
+                    data: [4500, 4800, 4900, 5200, 4200, 5800, 5100, 5400, 5900, 6200, 6800, 7800, 8200, 8900, 9200, 11200, 12100, 13800, 14200, 15800, 18200, 19800, 22100, 25800],
+                    backgroundColor: '#8b5cf6',
+                    borderColor: '#333',
+                    borderWidth: 1.5
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        ...chartOptions.plugins.title,
+                        text: 'Average Price by Model Year'
+                    }
+                },
+                scales: {
+                    ...chartOptions.scales,
+                    x: {
+                        ...chartOptions.scales.x,
+                        ticks: {
+                            maxTicksLimit: 12
                         }
                     }
                 }
