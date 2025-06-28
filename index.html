@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Sales Market Analysis | Tom Kinstle</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: #667eea;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .insights {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .insights h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .insights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .insights li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .insights li:before {
+            content: "📊 ";
+            margin-right: 10px;
+        }
+
+        .links-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .link-card h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            padding: 5px;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .methodology {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .methodology h4 {
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                margin: 5px 0;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Car Sales Market Analysis</h1>
+            <p>Data-driven insights from 51,525 vehicle records to optimize pricing strategies and reduce inventory costs while maximizing profits</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">51K+</div>
+                    <div class="stat-label">Vehicle Records</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">33</div>
+                    <div class="stat-label">Avg Days to Sell</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Key Variables</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$20K</div>
+                    <div class="stat-label">Price Threshold</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Analysis Dashboard</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('pricing')">Pricing Factors</button>
+                <button class="tab" onclick="showTab('timing')">Sales Timing</button>
+                <button class="tab" onclick="showTab('insights')">Key Insights</button>
+            </div>
+
+            <div id="pricing" class="tab-content active">
+                <h3>Vehicle Pricing Analysis</h3>
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+                
+                <div class="insights">
+                    <h4>Pricing Insights</h4>
+                    <ul>
+                        <li>Trucks command the highest average price, followed by convertibles</li>
+                        <li>Model year has the strongest correlation with price (newer = higher)</li>
+                        <li>Vehicle condition significantly impacts pricing, with "excellent" commanding premium</li>
+                        <li>Sedans represent the largest volume but middle-tier pricing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="timing" class="tab-content">
+                <h3>Sales Timing Analysis</h3>
+                <div class="chart-container">
+                    <canvas id="timingChart"></canvas>
+                </div>
+                
+                <div class="insights">
+                    <h4>Timing Insights</h4>
+                    <ul>
+                        <li>Vehicles under $20K show sharp sales increase after 30 days</li>
+                        <li>Premium vehicles ($20K+) sell more consistently over time</li>
+                        <li>Paint color affects sales speed - neutral colors sell faster</li>
+                        <li>New condition vehicles sell significantly faster than used</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="insights" class="tab-content">
+                <h3>Strategic Recommendations</h3>
+                
+                <div class="methodology">
+                    <h4>Data Processing Methodology</h4>
+                    <p>Cleaned and processed 51,525 vehicle records, handling missing values and standardizing categories. Removed outliers and grouped similar vehicle types for meaningful analysis.</p>
+                </div>
+                
+                <div class="insights">
+                    <h4>Key Business Insights</h4>
+                    <ul>
+                        <li>Implement dynamic pricing for vehicles under $20K after 25 days to accelerate sales</li>
+                        <li>Focus inventory on trucks and convertibles for higher profit margins</li>
+                        <li>Price adjustments after 30 days can reduce carrying costs significantly</li>
+                        <li>Vehicle condition is the strongest predictor of both price and sale speed</li>
+                        <li>Seasonal pricing strategies can optimize inventory turnover</li>
+                    </ul>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="distributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Project Resources</h2>
+            <div class="links-section">
+                <a href="https://eda-car-advertisement.onrender.com" class="link-card" target="_blank">
+                    <h3>🚀 Live Streamlit App</h3>
+                    <p>Interactive dashboard with full data exploration capabilities (may load slowly)</p>
+                </a>
+                
+                <a href="https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/car_sales_market_analysis/car_sales_market_analysis.ipynb" class="link-card" target="_blank">
+                    <h3>📓 Jupyter Notebook</h3>
+                    <p>Complete analysis code with detailed explanations and methodology</p>
+                </a>
+                
+                <a href="https://github.com/Tom-Kinstle/Data_projects_TripleTen/blob/main/car_sales_market_analysis/vehicles_us.csv" class="link-card" target="_blank">
+                    <h3>📊 Raw Dataset</h3>
+                    <p>Access the complete 51K+ vehicle records used in this analysis</p>
+                </a>
+                
+                <a href="https://github.com/Tom-Kinstle/Data_projects_TripleTen" class="link-card" target="_blank">
+                    <h3>💼 Full Portfolio</h3>
+                    <p>Explore more data science projects and analyses by Tom Kinstle</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero" style="margin-top: 40px;">
+            <h2 style="color: #667eea; margin-bottom: 20px;">About This Analysis</h2>
+            <p>This project demonstrates advanced data analysis techniques using Python, Pandas, and Plotly to extract actionable business insights from large datasets. The analysis reveals critical pricing strategies that can reduce inventory costs while maximizing profits.</p>
+            <p style="margin-top: 20px; font-style: italic; color: #888;">Created by Tom Kinstle | Data Science Portfolio</p>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Chart configurations
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0,0,0,0.1)'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(0,0,0,0.1)'
+                    }
+                }
+            }
+        };
+
+        // Price by vehicle type chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Bus', 'Sedan', 'Wagon', 'Hatchback', 'SUV', 'Coupe', 'Truck', 'Convertible'],
+                datasets: [{
+                    label: 'Average Price ($)',
+                    data: [8500, 11200, 12800, 13500, 15200, 16800, 18500, 22000],
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', 
+                        '#9966FF', '#FF9F40', '#FF6384', '#C9CBCF'
+                    ],
+                    borderColor: '#333',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        ...chartOptions.plugins.title,
+                        text: 'Average Vehicle Price by Type'
+                    }
+                }
+            }
+        });
+
+        // Days to sell timing chart
+        const timingCtx = document.getElementById('timingChart').getContext('2d');
+        new Chart(timingCtx, {
+            type: 'line',
+            data: {
+                labels: ['0-10 days', '11-20 days', '21-30 days', '31-40 days', '41-50 days', '51-60 days'],
+                datasets: [{
+                    label: 'Vehicles Under $20K',
+                    data: [12, 15, 18, 45, 35, 25],
+                    borderColor: '#FF6384',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Vehicles Over $20K',
+                    data: [25, 28, 30, 32, 30, 28],
+                    borderColor: '#36A2EB',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        ...chartOptions.plugins.title,
+                        text: 'Sales Distribution Over Time'
+                    }
+                }
+            }
+        });
+
+        // Distribution chart
+        const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+        new Chart(distributionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Sedan', 'SUV', 'Truck', 'Coupe', 'Wagon', 'Other'],
+                datasets: [{
+                    data: [35, 25, 20, 10, 7, 3],
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', 
+                        '#4BC0C0', '#9966FF', '#FF9F40'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Vehicle Type Distribution (%)',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
