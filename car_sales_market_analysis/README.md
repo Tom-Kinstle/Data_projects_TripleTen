@@ -1,18 +1,8 @@
 # Car Sales and Marketing
 
-Taking a data file of 51,525 records containing sales information of new and used vehicles (age, type, price, etc.). We clean the data to ensure each column has the correct number of values and data type. Next, start to order and group the data so we can visually recognize factors that influence price, and customer behaviors that relate to the time is takes vehicles to sell. Learning from our analysis why certain vehicle types tend to sell quicker than others. Ultimately discovering how pricing can affect consumer behaviors. We can use this knowledge to make better decisions on pricing; reducing overhead costs while maximizing profits.
+Optimized vehicle pricing strategies and inventory management by analyzing 51,525 car advertisements to identify key factors driving pricing and sales velocity. Discovered that vehicle type, model year, and condition are the primary pricing drivers, while color and condition significantly impact time-to-sale (averaging 33 days across price segments). Applied statistical analysis and data visualization to reveal pricing patterns, showing vehicles above and below $20,000 have similar average selling times but different distribution patterns. Provides dealerships actionable insights to maximize pricing while minimizing inventory holding costs and days on lot.
 
-• In order to run the application locally you will need a virtual environment like Anaconda Navigator. https://www.anaconda.com/download
-
-• Open CMD.exe prompt in Anaconda Navigator
-
-• Install streamlit (pip install streamlit).
-
-• Change directories (CD file path location).
-
-• Then run the app file (streamlit run app.py).
-
-# Website
+# Streamlit live-interactive data 
 
 https://eda-car-advertisement.onrender.com
 
