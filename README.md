@@ -6,7 +6,7 @@ Optimized vehicle pricing strategies and inventory management by analyzing 51,52
 
 # Global Gaming Marketing Strategy
 
-Built a model to predict video game success by analyzing sales, platform, and review data. Identified key factors, including top-performing genres and platforms, to optimize international marketing advertising strategies.
+This project analyzed global video game sales to uncover what drives game popularity and revenue across platforms and regions. By cleaning and filtering data from 5,000+ titles, we identified patterns in genre, rating, platform, and review scores that correlate with million-unit sales. A predictive filter based on critic and user ratings successfully flagged top-selling games in 2015 and 2016, improving alignment between product offerings and market demand. These insights support smarter marketing, release timing, and inventory decisions in the gaming industry.
 
 # Gold Mine Recovery 
 
