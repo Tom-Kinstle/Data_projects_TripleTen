@@ -10,7 +10,7 @@ This project analyzed global video game sales to uncover what drives game popula
 
 # Gold Mine Recovery 
 
-This project developed a machine learning model for predicting gold recovery from ore, optimizing production processes and reducing inefficiencies. By utilizing hyperparameter tuning and cross-validation, we achieved a final sMAPE of 0.983 (less than 2% error), ensuring high accuracy and reliability in the predictions.
+This project improved gold recovery rates at Zyfra’s processing plant by analyzing how different parameters in flotation and purification stages affected final output. Using correlation analysis and regression modeling, we identified key features with the strongest impact on gold yield and built predictive models with a test R² of 0.63. These models provide real-time insights to operators, enabling better control of processes and reduced gold loss. The result is improved operational efficiency and increased profitability through smarter resource recovery.
 
 # Lift Taxi Time
 
